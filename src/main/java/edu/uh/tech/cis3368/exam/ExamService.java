@@ -25,34 +25,17 @@ public class ExamService {
      * Create 5 servers and store them in the database. See handout for required data.
      */
     public void createData() {
-        var servers = Arrays.asList(
-                new Server("Main","T2 110",new BigDecimal("3424.73")),
-                new Server("Backup", "T2 110",new BigDecimal("2509.10")),
-                new Server("DNS","T3 121", new BigDecimal("5020.35")),
-                new Server("DNS2","T3 121", new BigDecimal("5499.27")),
-                new Server("DNS3","T2 110",new BigDecimal("2909.13")));
-
-        servers.forEach(serverRepository::save);
     }
 
 
     public BigDecimal calculateSumByLocation(String location){
-        ArrayList<Server> servers = serverRepository.findServersByLocation(location);
-        var sum = servers.stream()
-                .map(x -> x.getReplacementCost())
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-        return sum;
+        return new BigDecimal("0.00"); // placeholder
     }
 
 
 
 
     public List<String> roomsContainingDnsServers() {
-        var servers = serverRepository.findServersByNameContaining("DNS");
-        return servers
-                .stream()
-                .map(s -> s.getLocation())
-                .distinct()
-                .collect(Collectors.toList());
+        return null;
     }
 }
